@@ -15,7 +15,7 @@ for line in read_file:
 sorted_names = sorted(dictionary_restaurant.items())
 
 while on: 
-    user_choice = input("You can choose ratings(R), add(A), random restaurant update(U), or quit(Q)").title()
+    user_choice = input("You can choose ratings(R), add(A), choose restaurant to update(U), or quit(Q)").title()
     
     if user_choice == "R":
             
@@ -37,17 +37,31 @@ while on:
         for restaurant_name, rate in sorted_names:             
             print(f'{restaurant_name} is rated at {rate}.')
         pass
+    # elif user_choice == "U":
+    #     random_restaurant = choice(restaurants)
+    #     print(f"The restaurant is {random_restaurant}. The current rating is {dictionary_restaurant[random_restaurant]}")
+    #     new_rate = input("Rate:")
+    #     if int(new_rate) < 0 or int(new_rate) > 6:
+    #         print("Rate should be between 1 and 5")
+    #         new_rate = input("Rate:")
+    #     else: 
+    #         dictionary_restaurant[random_restaurant] = new_rate
+    #     sorted_names = sorted(dictionary_restaurant.items())    
+    #     pass
     elif user_choice == "U":
-        random_restaurant = choice(restaurants)
-        print(f"The restaurant is {random_restaurant}. The current rating is {dictionary_restaurant[random_restaurant]}")
-        new_rate = input("Rate:")
-        if int(new_rate) < 0 or int(new_rate) > 6:
-            print("Rate should be between 1 and 5")
-            new_rate = input("Rate:")
+        restaurant_to_update = input("What restaurant would you like to update?").title()
+        if restaurant_to_update not in restaurants:
+            print("That restaurant is not currently in the list. Please add the restaurant first.")
         else: 
-            dictionary_restaurant[random_restaurant] = new_rate
-        sorted_names = sorted(dictionary_restaurant.items())    
-        pass
+            print(f"{restaurant_to_update}'s current rating is {dictionary_restaurant[restaurant_name]}")
+            new_rate = input("Rate:")
+            if int(new_rate) < 0 or int(new_rate) > 6:
+                print("Rate should be between 1 and 5")
+                new_rate = input("Rate:")
+            else: 
+                dictionary_restaurant[restaurant_to_update] = new_rate
+            sorted_names = sorted(dictionary_restaurant.items())    
+            pass
     elif user_choice == "Q":
         on = False
         break

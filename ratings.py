@@ -13,12 +13,18 @@ for line in read_file:
     rate = line[1]
 
     dictionary_restaurant[restaurant_name] = rate
-print(dictionary_restaurant)
+
 sorted_names = sorted(dictionary_restaurant.items())
     
 for restaurant_name, rate in sorted_names:
-    print(f'{restaurant_name} is ratesd at {rate}.')
+    print(f'{restaurant_name} is rated at {rate}.')
 
+new_restaurant = input("Restaurant name:").title()
+new_rate = input("Rate:")
 
+dictionary_restaurant[new_restaurant] = new_rate
 
-
+sorted_names = sorted(dictionary_restaurant.items())
+    
+for restaurant_name, rate in sorted_names:
+    print(f'{restaurant_name} is rated at {rate}.')

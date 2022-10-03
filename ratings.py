@@ -22,9 +22,13 @@ for restaurant_name, rate in sorted_names:
 new_restaurant = input("Restaurant name:").title()
 new_rate = input("Rate:")
 
-dictionary_restaurant[new_restaurant] = new_rate
+if int(new_rate) < 0 or int(new_rate) > 6:
+    print("Rate should be between 1 and 5")
+    new_rate = input("Rate:")
+else: 
+    dictionary_restaurant[new_restaurant] = new_rate
 
 sorted_names = sorted(dictionary_restaurant.items())
-    
-for restaurant_name, rate in sorted_names:
+
+for restaurant_name, rate in sorted_names:             
     print(f'{restaurant_name} is rated at {rate}.')
